@@ -1,0 +1,65 @@
+{
+	"name": "donkeyutility",
+	"displayName": "DonkeyUtility",
+	"description": "A VSCode Extension, for personal use, giving benefits at developing theme",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.70.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:donkeyutility.createProcessorDefinition",
+		"onCommand:donkeyutility.createAllProcessorDefinition"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "donkeyutility.createProcessorDefinition",
+				"title": "LYC: Create Selected Processor Definition in corresponding file"
+			},
+			{
+				"command": "donkeyutility.createAllProcessorDefinition",
+				"title": "LYC: Create All Processor Definition in corresponding file"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"command": "donkeyutility.createAllProcessorDefinition",
+					"group": "1_modification"
+				},
+				{
+					"command": "donkeyutility.createProcessorDefinition",
+					"group": "1_modification"
+				}
+			],
+			"explorer/context": []
+		},
+		"keybindings": [
+			{
+				"command": "donkeyutility.createProcessorDefinition",
+				"key": "ctrl+shift+d",
+				"mac": "cmd+shift+d",
+				"when": "editorTextFocus && editorLangId == lua"
+			}
+		]
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.70.0",
+		"@types/mocha": "^10.0.3",
+		"@types/node": "18.x",
+		"eslint": "^8.52.0",
+		"glob": "^10.3.10",
+		"mocha": "^10.2.0",
+		"typescript": "^5.2.2",
+		"@vscode/test-electron": "^2.3.6"
+	}
+}
